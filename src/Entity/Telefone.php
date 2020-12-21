@@ -10,7 +10,7 @@ class Telefone
 {
     /**
      * @id
-     * @GeneraredValue
+     * @GeneratedValue
      * @Column (type="integer")
      */
     private $id;
