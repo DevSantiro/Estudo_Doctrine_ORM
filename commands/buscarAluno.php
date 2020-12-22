@@ -13,7 +13,12 @@ $alunoRepository = $entityManager->getRepository(Aluno::class);
 
 /** @var Aluno[] $alunoList */
 
-$alunoList = $alunoRepository->findAll();
+// $alunoList = $alunoRepository->findAll();
+
+$sql = "SELECT aluno FROM Alura\\Doctrine\\Entity\\Aluno aluno";
+
+$query = $entityManager->createQuery($sql);
+$alunoList = $query->getResult();
 
 foreach ($alunoList as $aluno) {
     $telefones = $aluno

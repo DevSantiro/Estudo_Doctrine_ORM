@@ -6,9 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Alura\Doctrine\Repository\AlunoRepository")
  */
-
 class Aluno
 {
     /**
@@ -24,7 +23,7 @@ class Aluno
     private $nome;
 
     /**
-     * @OneToMany(targetEntity = "Telefone", mappedBy="aluno", cascade={"remove", "persist"})
+     * @OneToMany(targetEntity = "Telefone", mappedBy="aluno", cascade={"remove", "persist"}, fetch="EAGER")
      */
     private $telefones;
 
@@ -77,6 +76,9 @@ class Aluno
         $curso->addAluno($this);
     }
 
+    /**
+     * @return Curso[]
+     */
     public function getCursos(): Collection
     {
         return $this->cursos;
